@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { HeroProvider } from "./providers/provider";
 import Header from "./components/UI/header";
+import { siteConfig } from "@/config/site.config";
 
 
 const geistSans = Geist({
@@ -16,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PUNK ROLL RECIPES",
-  description: "Recipes for empolyees of Punk Roll bar",
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({

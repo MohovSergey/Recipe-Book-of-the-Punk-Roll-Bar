@@ -1,4 +1,5 @@
 "use client";
+import { siteConfig } from "@/config/site.config";
 import {
   Navbar,
   NavbarBrand,
@@ -6,7 +7,6 @@ import {
   NavbarItem,
   Button,
 } from "@heroui/react";
-import { color } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,7 +15,7 @@ export const Logo = () => {
   return (
     <Image
       src={"/logo-punkroll-txt.svg"}
-      alt="Punk Roll Bar"
+      alt={siteConfig.title}
       width={30}
       height={30}
       priority
@@ -24,11 +24,6 @@ export const Logo = () => {
 };
 
 export default function Header() {
-  const navItems = [
-    { href: "/", label: "Рецепты" },
-    { href: "/igredientss", label: "Ингридиенты" },
-    { href: "/about", label: "О нас" },
-  ];
 
   const pathname = usePathname();
 
@@ -41,7 +36,7 @@ export default function Header() {
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {navItems.map((item) => {
+        {siteConfig.navItems.map((item) => {
             const isActive = pathname === item.href;
           return (
             <NavbarItem key={crypto.randomUUID()}>
