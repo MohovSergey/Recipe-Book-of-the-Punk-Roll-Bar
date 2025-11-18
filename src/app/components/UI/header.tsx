@@ -1,4 +1,5 @@
 "use client";
+import { layoutConfig } from "@/config/layout.config";
 import { siteConfig } from "@/config/site.config";
 import {
   Navbar,
@@ -24,44 +25,41 @@ export const Logo = () => {
 };
 
 export default function Header() {
+  const pathname = usePathname();
 
-const pathname = usePathname();
-
-const getItems = () => {
-  return (
-    siteConfig.navItems.map((item) => {
+  const getNavItems = () => {
+    return siteConfig.navItems.map((item) => {
       const isActive = pathname === item.href;
-        return (
-          <NavbarItem key={crypto.randomUUID()}>
-            <Link 
-              className={`
+      return (
+        <NavbarItem key={crypto.randomUUID()}>
+          <Link
+            className={`
                 px-3 py-1
-                ${isActive ? "text-blue-500" :
-                "text-foreground"}
+                ${isActive ? "text-blue-500" : "text-foreground"}
                 hover: text-blue-300 hover: border
                 hover: border-blue-300 hover: rounded-md
                 transition-colors
                 transition-border
                 duration-200
-                `} href={item.href}
+                `}
+            href={item.href}
           >
             {item.label}
           </Link>
         </NavbarItem>
       );
-    })
-  )
-}
+    });
+  };
 
   return (
-    <Navbar>
+    <Navbar style={{height: layoutConfig.headerHeight}}>
       <NavbarBrand>
         <Link href={"/"}>
           <Logo />
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {getItems()}
+        {getNavItems()}
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
@@ -76,6 +74,5 @@ const getItems = () => {
     </Navbar>
   );
 }
-
 
 //29:16 https://www.youtube.com/watch?v=KZb53sf-PEg

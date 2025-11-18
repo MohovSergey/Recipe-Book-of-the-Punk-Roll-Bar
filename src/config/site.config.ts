@@ -5,7 +5,7 @@ export const siteConfig = {
   description: "Recipes for empolyees of Punk Roll bar",
   navItems:[
       { href: "/", label: "Рецепты" },
-      { href: "/igredientss", label: "Ингридиенты" },
+      { href: "/igredients", label: "Ингридиенты" },
       { href: "/about", label: "О нас" },
     ],
 };

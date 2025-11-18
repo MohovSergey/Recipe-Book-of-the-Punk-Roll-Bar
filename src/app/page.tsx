@@ -2,6 +2,6 @@
 
 export default function Home() {
   return (
-    <h1>hello I'm here</h1>
+    <h1>main</h1>
   );
 }
