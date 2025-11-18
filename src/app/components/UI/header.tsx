@@ -25,8 +25,33 @@ export const Logo = () => {
 
 export default function Header() {
 
-  const pathname = usePathname();
+const pathname = usePathname();
 
+const getItems = () => {
+  return (
+    siteConfig.navItems.map((item) => {
+      const isActive = pathname === item.href;
+        return (
+          <NavbarItem key={crypto.randomUUID()}>
+            <Link 
+              className={`
+                px-3 py-1
+                ${isActive ? "text-blue-500" :
+                "text-foreground"}
+                hover: text-blue-300 hover: border
+                hover: border-blue-300 hover: rounded-md
+                transition-colors
+                transition-border
+                duration-200
+                `} href={item.href}
+          >
+            {item.label}
+          </Link>
+        </NavbarItem>
+      );
+    })
+  )
+}
 
   return (
     <Navbar>
@@ -36,27 +61,7 @@ export default function Header() {
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {siteConfig.navItems.map((item) => {
-            const isActive = pathname === item.href;
-          return (
-            <NavbarItem key={crypto.randomUUID()}>
-              <Link 
-                className={`
-                    px-3 py-1
-                    ${isActive ? "text-blue-500" :
-                    "text-foreground"}
-                    hover: text-blue-300 hover: border
-                    hover: border-blue-300 hover: rounded-md
-                    transition-colors
-                    transition-border
-                    duration-200
-                    `} href={item.href}
-              >
-                {item.label}
-              </Link>
-            </NavbarItem>
-          );
-        })}
+        {getItems()}
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
