@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { HeroProvider } from "./providers/provider";
 import Header from "./components/UI/header";
+import { siteConfig } from "@/config/site.config";
+import { layoutConfig } from "@/config/layout.config";
 
 
 const geistSans = Geist({
@@ -16,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PUNK ROLL RECIPES",
-  description: "Recipes for empolyees of Punk Roll bar",
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -32,7 +34,17 @@ export default function RootLayout({
       >
         <HeroProvider>
           <Header />
-          {children}
+          <main className={`flex flex-col w-full justify-start items-center`}
+      style={{
+        height: `calc(100vh - ${layoutConfig.headerHeight} - ${layoutConfig.footerHeight})`,
+      }}
+          >
+            {children}
+          </main>
+          <footer className='w-full flex items-center justify-center py-3'
+                  style={{height: layoutConfig.footerHeight}}>
+            <p>{siteConfig.description}</p>
+          </footer>
         </HeroProvider>
       </body>
     </html>
