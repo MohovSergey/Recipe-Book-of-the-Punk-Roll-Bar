@@ -1,13 +1,15 @@
+'use client';
+
 import { Form } from "@heroui/form";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/react";
 import { useState } from "react";
 
-interface modalProps {
+interface ModalProps {
     onClose: () => void;
 }
 
-const RegistrationForm = ({onClose}: modalProps) => {
+const RegistrationForm = ({onClose}: ModalProps) => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
