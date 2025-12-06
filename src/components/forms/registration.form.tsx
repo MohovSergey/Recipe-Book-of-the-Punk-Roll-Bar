@@ -1,5 +1,6 @@
 'use client';
 
+import registerUser from "@/actions/register";
 import { Form } from "@heroui/form";
 import { Input } from "@heroui/input";
 import { Button } from "@heroui/react";
@@ -24,6 +25,8 @@ const RegistrationForm = ({onClose}: ModalProps) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Form submitted', formData);
+        const result = await registerUser(formData);
+        console.log('result', result)
         onClose();
     }
 

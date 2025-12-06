@@ -24,4 +24,6 @@ const CustomModal = ({isOpen, onClose, title, children, size}: ModalProps) => {
     );
 };
 
+
+
 export default CustomModal;
